@@ -1,4 +1,4 @@
-function img2spec(img_path, out_path, duration, img_freq_range, img_time_range, samp_rate, freq_step, samp_step)
+function out_signal = img2spec(img_path, duration, img_freq_range, img_time_range, samp_rate, freq_step, samp_step)
     img_duration = img_time_range(2) - img_time_range(1);
     img_data = load_img(img_path, freq_step, samp_rate, img_duration);
     img_data = flipud(img_data);
@@ -23,8 +23,7 @@ function img2spec(img_path, out_path, duration, img_freq_range, img_time_range, 
         end
         out_signal(idx_start:idx_end) = signal;
     end
-    rescaled_out_signal = rescale(out_signal, -1, 1);
-    audiowrite(out_path, rescaled_out_signal, samp_rate);
+    out_signal = rescale(out_signal, -1, 1);
 end
 
 function img_data = load_img(img_path, freq_step, samp_rate, duration)
