@@ -14,8 +14,8 @@ samp_rate: sampling rate/sampling frequency (usually 22050 or 44100 or 48000)
 freq_step: make sure its a divisor of samp_rate/2
 samp_step: make sure its a divisor of samp_rate
 
-Returns a row matrix containing the signal samples.
+Returns a row matrix (of length 1 by duration*samp_rate) containing the signal's samples.
 
 To write to a file, use:
-audiowrite(dest, img_signal, sampling_rate)
+audiowrite(dest, img_signal, samp_rate)
 ```
