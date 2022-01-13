@@ -3,7 +3,7 @@ function out_signal = img2spec(img_path, duration, img_freq_range, img_time_rang
     img_data = load_img(img_path, freq_step, samp_rate, img_duration);
     img_data = flipud(img_data);
     img_data = transpose(img_data);
-    out_signal = zeros(1, duration * samp_rate);
+    out_signal = zeros(duration * samp_rate, 1);
     img_size = size(img_data);
 
     for x = 1:samp_step:img_size(1)
