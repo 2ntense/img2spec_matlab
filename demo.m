@@ -1,21 +1,22 @@
-img_file = "txt.png";
-audio_file = "neoncity.wav";
+audio_file = "in.wav";
 out_file = "out.wav";
+img_file = "txt.png";
 samp_rate = 44100;
-duration = 441000 / samp_rate;
-start_freq = 18000;
+duration = 30;
+start_freq = 19000;
 end_freq = 20000;
 start_time = 0;
-end_time = 10;
-freq_step = 175;
-samp_step = 1050;
+end_time = 30;
+freq_step = 25;
+samp_step = 490;
 
-lorem_ispum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+lorem_ispum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas at commodo odio. Sed nec porta odio. Donec ante mi, eleifend non nunc at, finibus posuere ipsum. Phasellus tempor scelerisque ultricies. Nulla quam lorem, eleifend vitae volutpat quis, eleifend et sapien.";
 
 imwrite(text2im(lorem_ispum), img_file);
 img_signal = img2spec(img_file, duration, [start_freq end_freq], [start_time end_time], samp_rate, freq_step, samp_step);
 audio_signal = audioread(audio_file);
 
+% Determine gain required for 55 dB SNR
 mixed_signal = mix_signals(audio_signal, img_signal, 0, 0);
 base_snr = snr(audio_signal, mixed_signal - audio_signal);
 db_diff = 55 - base_snr;
