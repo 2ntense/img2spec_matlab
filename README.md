@@ -1,7 +1,7 @@
 # Usage example
 
 ```
-img_signal = img2spec("smiley_double.png", 5, [8000 10000], [2 3], 48000, 200, 1000)
+img_signal = img2spec("input.png", 5, [8000 10000], [2 3], 48000, 200, 1000)
 ```
 ```
 img2spec(img_path, out_path, duration, img_freq_range, img_time_range, samp_rate, freq_step, samp_step)
